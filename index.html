@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo - CustomSelect plugin</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.custom-select.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('select').not('#demo-select_2').CustomSelect();
+				$('#demo-select_2').CustomSelect({visRows:10, search:true, modifier: 'mod'});
+				
+				$('#button_1').on('click', function(event){
+					event.preventDefault();
+					var $btn = $(this);
+					if($('#demo-select_1').is(':disabled')){
+						$btn.text('Set disable');
+						$('#demo-select_1').removeAttr('disabled').trigger('update');
+					}else{
+						$btn.text('Set enable');
+						$('#demo-select_1').attr({'disabled':'disabled'}).trigger('update');
+					}
+				});
+				$('#button_2_add').on('click', function(event){
+					event.preventDefault();
+					$('#demo-select_2').append($('#demo-select_2 option:odd').clone());
+					$('#demo-select_2').trigger('update');
+				});
+				$('#button_2_del').on('click', function(event){
+					event.preventDefault();
+					$('#demo-select_2 option:even').remove();
+					$('#demo-select_2').trigger('update');
+				});
+			});
+		</script>
+		<style type="text/css">
+			select {width: 200px;}
+			label {cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<form action="">
+			<div class="example_1">
+				<p></p>
+				<label for="demo-select_1">Example 1:</label>
+				<select name="" id="demo-select_1">
+					<optgroup label="Заголовок группы 1">
+						<option value="1">Looooooooooooooooooooooooong item 1</option>
+						<option value="2">Item 2</option>
+						<option value="3" disabled>Item 3</option>
+						<option value="4">Item 4</option>
+						<option value="5">Item 5</option>
+						<option value="6" disabled>Item 6</option>
+						<option value="7">Item 7</option>
+						<option value="8">Item 8</option>
+						<option value="9">Item 9</option>
+						<option value="10">Item 10</option>
+						<option value="11">Looooooooooooooooooooooooong item 11</option>
+						<option value="12" selected>Item 12</option>
+						<option value="13" disabled>Item 13</option>
+						<option value="14">Item 14</option>
+						<option value="15">Item 15</option>
+						<option value="16" disabled>Item 16</option>
+						<option value="17">Item</option>
+						<option value="18">Item</option>
+					</optgroup>
+					<optgroup label="Заголовок группы 2">
+						<option value="19">Item</option>
+						<option value="20">Item</option>
+						<option value="21">Looooooooooooooooooooooooong item</option>
+						<option value="22">Item</option>
+						<option value="23" disabled>Item</option>
+						<option value="24">Item</option>
+						<option value="25">Item</option>
+						<option value="26" disabled>Item</option>
+						<option value="27">Item</option>
+						<option value="28">Item</option>
+						<option value="29">Item</option>
+						<option value="30">Item</option>
+						<option value="31">Looooooooooooooooooooooooong item</option>
+						<option value="32">Item</option>
+						<option value="33" disabled>Item</option>
+						<option value="34">Item</option>
+						<option value="35">Item</option>
+						<option value="36" disabled>Item</option>
+						<option value="37">Item</option>
+						<option value="38">Item</option>
+						<option value="39">Item</option>
+						<option value="40">Item</option>
+					</optgroup>
+				</select>
+				<button id="button_1">Set disable</button>
+			</div>
+			
+			<div class="example_2">
+				<p></p>
+				<label for="demo-select_2">Example 2:</label>
+				<select name="" id="demo-select_2">
+					<option value="">Любая</option>
+					<option value="67">5 Star Models</option>
+					<option value="7">Accurate Armour</option>
+					<option value="100">Add On parts</option>
+					<option value="102">Adlers Nest</option>
+					<option value="44">AFV Club</option>
+					<option value="21">AK Interactive</option>
+					<option value="64">Alliance Model Works</option>
+					<option value="11">Amusing Hobby</option>
+					<option value="68">Armo</option>
+					<option value="41">Armycast M&amp;M</option>
+					<option value="51">Atelier Infinite</option>
+					<option value="29">Azimut Productions</option>
+					<option value="65">Best Value Models</option>
+					<option value="87">Black Dog</option>
+					<option value="31">Blast Models</option>
+					<option value="32">Blitz creation</option>
+					<option value="59">Blitz Workshop</option>
+					<option value="33">Brach Model</option>
+					<option value="46">Bronco Model</option>
+					<option value="101">Calibre 35</option>
+					<option value="89">CMK</option>
+					<option value="10">Commander Models</option>
+					<option value="49">Cyber-Hobby</option>
+					<option value="40">CZ Kolinec</option>
+					<option value="79">Decal Star</option>
+					<option value="85">DEF Model</option>
+					<option value="30">DES Kit</option>
+					<option value="17">Diopark</option>
+					<option value="35">Dnepromodel</option>
+					<option value="77">Drakkar Models</option>
+					<option value="39">Eagle CZ</option>
+					<option value="103">Eduard</option>
+					<option value="91">Elitemodell</option>
+					<option value="9">FanKit Models</option>
+					<option value="19">Fine Molds</option>
+					<option value="55">HAD Models </option>
+					<option value="63">Hauler</option>
+					<option value="47">HobbyFan</option>
+					<option value="22">IBG Models</option>
+					<option value="74">Industria Mechanika</option>
+					<option value="86">Inside the Armour</option>
+					<option value="88">J's Work</option>
+					<option value="38">JP Hobby</option>
+					<option value="80">Kamizukuri</option>
+					<option value="37">Katana</option>
+					<option value="26">KFS Miniatures</option>
+					<option value="24">Kinetic Models</option>
+					<option value="84">Legend Productions</option>
+					<option value="28">LZ Models</option>
+					<option value="14">Meng Model</option>
+					<option value="43">Minimanfactory</option>
+					<option value="27">Mirror Models</option>
+					<option value="42">MK Models</option>
+					<option value="93">Model Victoria</option>
+					<option value="48">MR Modellbau</option>
+					<option value="104">Neo Models</option>
+					<option value="23">Panda Hobby</option>
+					<option value="36">PanzerShop</option>
+					<option value="75">Paolo Parente's DUST</option>
+					<option value="76">Passion Models</option>
+					<option value="72">Perfect Scale Modellbau</option>
+					<option value="57">Peter Horvath' RP Toolz </option>
+					<option value="18">Pit-Road</option>
+					<option value="60">Plusmodel</option>
+					<option value="99">Pro Art Models</option>
+					<option value="45">Real Model</option>
+					<option value="66">Resicast</option>
+					<option value="25">Riich.Models</option>
+					<option value="81">RMG Resin Models</option>
+					<option value="97">Royal Model</option>
+					<option value="69">RPM</option>
+					<option value="56">SBS Model</option>
+					<option value="78">Schatton Modellbau</option>
+					<option value="70">SKP Model</option>
+					<option value="83">Sovereign 2000</option>
+					<option value="58">Spade Ace Models</option>
+					<option value="82">Swash Design</option>
+					<option value="94">Tank Workshop</option>
+					<option value="71">TankMania</option>
+					<option value="15">Tasca</option>
+					<option value="98">The NewTMD (Tigermodels)</option>
+					<option value="16">Tristar</option>
+					<option value="73">Uschi van der Rosten</option>
+					<option value="92">Value Gear</option>
+					<option value="61">Verlinden Productions</option>
+					<option value="13">Vision Models</option>
+					<option value="12">Vulcan Scale Models</option>
+					<option value="34">Wespe Models</option>
+					<option value="20">Yellow Cat</option>
+					<option value="90">Разное</option>
+			</select>
+				<button id="button_2_add">Add some items</button><button id="button_2_del">Delete some items</button>
+			</div>
+			
+			<div class="example_3">
+				<p></p>
+				<label for="demo-select_3">Example 3:</label>
+				<select name="" id="demo-select_3" data-title="Заголовок" multiple>
+					<option value="1">Looong item 1</option>
+					<option value="2" selected>Item 2</option>
+					<option value="3">Item 3</option>
+					<option value="4">Item 4</option>
+					<option value="5" selected>Item 5</option>
+					<option value="6">Item 6</option>
+					<option value="7">Item 7</option>
+					<option value="8">Item 8</option>
+				</select>
+			</div>
+			
+			<div class="example_4">
+				<p></p>
+				<label for="demo-select_4">Example 4:</label>
+				<select name="" id="demo-select_4" disabled>
+					<option value="">Looong item</option>
+					<option value="">Item</option>
+					<option value="">Item</option>
+					<option value="">Item</option>
+					<option value="">Item</option>
+					<option value="">Item</option>
+					<option value="">Item</option>
+					<option value="">Item</option>
+				</select>
+			</div>
+		</form>
+	</body>
+</html>
