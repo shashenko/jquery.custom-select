@@ -13,7 +13,8 @@ $(function(){
 				visRows: 10,
 				search: false,
 				customScroll: true,
-				speed: 100
+				speed: 100,
+				internalMode: false
 			},
 			KEY = {
 				UP: 38,
@@ -88,6 +89,14 @@ $(function(){
 						dropDownTop = selectOffset.top + $selectBoxContainer.outerHeight(),
 						dropDownHeight = $selectList.outerHeight() - $selectList.height();
 						
+					if(opt.internalMode){
+						dropDownTop = '100%';
+						dropDownLeft = 0;
+						$selectBoxContainer.append($dropDown);
+					}else{
+						$('body').append($dropDown);
+					}
+
 					$dropDown
 						.css({'left': dropDownLeft, 'top': dropDownTop, 'height': 0})
 						.show();
@@ -146,8 +155,8 @@ $(function(){
 						case KEY.LEFT: selectItem($('.' + opt.stateClasses.itemSelected, $selectList).prevAll('.' + opt.prefix + '__item:not(.disabled):first')); break;
 						case KEY.DOWN:
 						case KEY.RIGHT: selectItem($('.' + opt.stateClasses.itemSelected, $selectList).nextAll('.' + opt.prefix + '__item:not(.disabled):first')); break;
-						case KEY.ENTER: $('.' + opt.stateClasses.itemSelected, $selectList).click(); break;
-						case KEY.SPACE: if(!$selectBoxContainer.is('.' + opt.stateClasses.expanded)) $dropDown.trigger('show'); break;
+						case KEY.ENTER: $('.' + opt.stateClasses.itemSelected, $selectList).click(); e.preventDefault(); break;
+						case KEY.SPACE: if(!$selectBoxContainer.is('.' + opt.stateClasses.expanded)) $dropDown.trigger('show'); e.preventDefault(); break;
 					}
 				})
 				//Update select
