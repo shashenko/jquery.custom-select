@@ -206,8 +206,13 @@ $(function(){
 			
 				//Create items
 				$('option', $nativeSelect).each(function(i){
-					var $option = $(this);
-					var $item = $('<div>', {'class': opt.prefix + '__item', 'title': $option.text(), 'text': $option.text()});
+					var $option = $(this),
+						optinModifier = $option.data('modifier'),
+						$item = $('<div>', {'class': opt.prefix + '__item', 'title': $option.text(), 'text': $option.text()});
+
+					if(optinModifier){
+						$item.addClass(opt.prefix + '__item_' + optinModifier);
+					}
 
 					if($option.is(':selected') && $option.val() != defaultTitle && defaultTitle != 'undefined'){
 						setTitle($option.text());
